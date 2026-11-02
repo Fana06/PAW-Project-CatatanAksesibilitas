@@ -1,0 +1,1 @@
+const express = require('express'); const c = require('../controllers/apiController'); const router = express.Router(); router.get('/status', c.status); router.get('/produk', c.produk); module.exports = router;

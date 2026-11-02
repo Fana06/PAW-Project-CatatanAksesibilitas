@@ -1,0 +1,10 @@
+<footer class="site-footer" id="tim">
+  <div class="container">
+    <h2>Tim</h2>
+    <p class="kelas">Kelas A, mata kuliah PAW.</p>
+    <ul class="anggota">
+      <% anggota.forEach(function (orang) { %><li><span class="nama"><%= orang.nama %></span> <span class="nim"><%= orang.nim %></span></li><% }) %>
+    </ul>
+    <p class="week-note">Week 7 — Express.js, EJS, REST API, dan middleware logger.</p>
+  </div>
+</footer>

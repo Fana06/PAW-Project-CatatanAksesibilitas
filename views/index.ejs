@@ -1,0 +1,430 @@
+
+<%- include('partials/head', { judul: judul }) %>
+
+<body>
+  <a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/">
+        <img src="/assets/logo.svg" width="32" height="32" alt="">
+        <span>Catatan Aksesibilitas</span>
+      </a>
+
+      <nav aria-label="Navigasi utama">
+        <ul class="menu">
+          <li><a href="/" aria-current="page">Beranda</a></li>
+          <li><a href="#fitur">Prinsip</a></li>
+          <li><a href="/ulasan">Ulasan Jurnal</a></li>
+          <li><a href="#kontak">Masukan</a></li>
+          <li><a href="#tim">Tim</a></li>
+          <li><a href="/api/status">API status</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="konten">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-teks">
+          <h1>Aksesibilitas web dimulai dari HTML yang benar</h1>
+
+          <p class="hero-deskripsi">
+            Situs ini merangkum jurnal Daniel Dang tentang cara memakai
+            HTML, CSS, dan JavaScript semantic untuk menerapkan prinsip
+            web accessibility. Ada ringkasan, contoh, dan ulasan
+            kekuatan serta kekurangannya.
+          </p>
+
+          <div class="aksi">
+            <a class="btn btn-utama" href="/ulasan">
+              Baca ulasan jurnal
+            </a>
+
+            <a class="btn btn-sekunder" href="#fitur">
+              Lihat empat prinsip
+            </a>
+          </div>
+        </div>
+
+        <figure class="hero-gambar">
+          <img
+            src="/assets/hero.svg"
+            alt="Ilustrasi halaman web dengan empat prinsip aksesibilitas POUR."
+          >
+
+          <figcaption>
+            Empat prinsip aksesibilitas web: Perceivable, Operable,
+            Understandable, dan Robust.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- PRINSIP AKSESIBILITAS -->
+    <section class="fitur" id="fitur">
+      <div class="container">
+        <h2>Apa saja yang dibahas</h2>
+
+        <p class="pengantar">
+          Jurnal ini berpegang pada empat prinsip WCAG yang disingkat
+          POUR, lalu membahas hambatan saat mengajarkannya dan cara mengujinya.
+        </p>
+
+        <div class="grid-fitur">
+          <% prinsip.forEach(function (p) { %>
+            <article class="kartu">
+              <span class="huruf" aria-hidden="true">
+                <%= p.huruf %>
+              </span>
+
+              <h3><%= p.nama %></h3>
+              <p><%= p.deskripsi %></p>
+              <code><%= p.contoh %></code>
+            </article>
+          <% }); %>
+
+          <article class="kartu kartu-beda">
+            <h3>Tantangan mengajar</h3>
+            <p>
+              Kompleksitas teknis, waktu kuliah terbatas, sumber daya
+              pengujian, dan rendahnya kesadaran mahasiswa menjadi
+              tantangan saat mengajarkan aksesibilitas.
+            </p>
+            <code>4 hambatan</code>
+          </article>
+
+          <article class="kartu kartu-beda">
+            <h3>Uji dengan pengguna</h3>
+            <p>
+              Hasil kerja perlu diuji dengan assistive technology
+              serta melibatkan pengguna penyandang disabilitas,
+              bukan hanya diperiksa lewat kode.
+            </p>
+            <code>uji langsung</code>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- API STATUS -->
+    <section class="api-demo">
+      <div class="container">
+        <h2>Status aplikasi</h2>
+
+        <p class="pengantar">
+          Status server dimuat dari endpoint backend
+          <code>/api/status</code>.
+        </p>
+
+        <div class="api-status">
+          <div class="status-header">
+            <strong>GET /api/status</strong>
+
+            <span class="pill" id="status-label">
+              Menghubungi server...
+            </span>
+          </div>
+
+          <pre id="status-output">Memuat response JSON...</pre>
+
+          <div class="api-links">
+            <a href="/api/status">Lihat JSON status</a>
+            <a href="/api/produk">Lihat JSON data produk</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DATA PRODUK DARI API -->
+    <section class="fitur" id="produk">
+      <div class="container">
+        <h2>Produk Pendukung Aksesibilitas</h2>
+
+        <p class="pengantar">
+          Berikut beberapa materi dan alat bantu untuk mempelajari
+          serta mengevaluasi aksesibilitas website.
+          Data diambil langsung dari backend melalui endpoint
+          <code>/api/produk</code>.
+        </p>
+
+        <p id="produk-status" role="status" aria-live="polite">
+          Memuat data produk...
+        </p>
+
+        <div class="grid-fitur" id="produk-container">
+          <!-- Produk ditampilkan melalui JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- FORM MASUKAN -->
+    <section class="kontak" id="kontak">
+      <div class="container kontak-inner">
+
+        <div class="kontak-teks">
+          <h2>Kirim masukan</h2>
+
+          <p>
+            Punya pertanyaan tentang ulasan kami atau menemukan
+            bagian halaman yang sulit diakses? Tulis di sini.
+          </p>
+
+          <p class="catatan">
+            Formulir ini masih berupa simulasi tampilan
+            dan belum menyimpan pesan.
+          </p>
+        </div>
+
+        <form class="form" id="feedback-form">
+
+          <div class="field">
+            <label for="nama">Nama</label>
+            <input
+              type="text"
+              id="nama"
+              name="nama"
+              autocomplete="name"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              autocomplete="email"
+              required
+              aria-describedby="petunjuk-email"
+            >
+
+            <p class="petunjuk" id="petunjuk-email">
+              Hanya dipakai untuk membalas pesan.
+            </p>
+          </div>
+
+          <div class="field">
+            <label for="topik">Topik</label>
+
+            <select id="topik" name="topik">
+              <option>Pertanyaan tentang jurnal</option>
+              <option>Masalah aksesibilitas di situs ini</option>
+              <option>Lainnya</option>
+            </select>
+          </div>
+
+          <fieldset class="field">
+            <legend>Kamu membaca sebagai</legend>
+
+            <div class="pilihan">
+              <label>
+                <input type="radio" name="peran"
+                  value="mahasiswa" checked>
+                Mahasiswa
+              </label>
+
+              <label>
+                <input type="radio" name="peran" value="dosen">
+                Dosen
+              </label>
+
+              <label>
+                <input type="radio" name="peran" value="lainnya">
+                Lainnya
+              </label>
+            </div>
+          </fieldset>
+
+          <div class="field span-2">
+            <label for="pesan">Pesan</label>
+
+            <textarea
+              id="pesan"
+              name="pesan"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+
+          <div class="span-2">
+            <button class="btn btn-utama" type="submit">
+              Kirim pesan
+            </button>
+
+            <p
+              class="status-pesan"
+              id="status-pesan"
+              role="status"
+              aria-live="polite"
+              hidden
+            ></p>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+    <!-- TENTANG JURNAL -->
+    <section class="tentang">
+      <div class="container tentang-inner">
+
+        <div>
+          <h2>Tentang jurnal ini</h2>
+
+          <p>
+            Ulasan lengkap memuat ringkasan isi, tabel teknik tiap
+            prinsip, kekuatan dan kekurangan, serta contoh kode
+            yang kami tulis sendiri.
+          </p>
+
+          <a class="btn btn-terang" href="/ulasan">
+            Buka ulasan jurnal
+          </a>
+        </div>
+
+        <dl class="info-jurnal">
+          <dt>Judul</dt>
+          <dd>
+            Using Blended HTML-CSS-JS Semantic to Implement
+            Web Accessibility Principles
+          </dd>
+
+          <dt>Penulis</dt>
+          <dd>
+            Daniel Dang, Eastern Institute of Technology Te Aho a Māui
+          </dd>
+
+          <dt>Terbitan</dt>
+          <dd>
+            Proceedings CITRENZ 2023, Auckland (terbit 2024)
+          </dd>
+        </dl>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- JAVASCRIPT -->
+  <script>
+
+    // 1. Mengambil status server dari API
+    async function loadStatus() {
+      const output = document.getElementById('status-output');
+      const label = document.getElementById('status-label');
+
+      try {
+        const response = await fetch('/api/status');
+
+        if (!response.ok) {
+          throw new Error('Gagal mengambil status server');
+        }
+
+        const data = await response.json();
+
+        output.textContent = JSON.stringify(data, null, 2);
+
+        label.textContent = 'Server berjalan';
+
+      } catch (error) {
+        output.textContent = error.message;
+        label.textContent = 'Tidak terhubung';
+      }
+    }
+
+
+    // 2. Mengambil dan menampilkan produk dari API
+    async function loadProduk() {
+      const container = document.getElementById('produk-container');
+      const status = document.getElementById('produk-status');
+
+      try {
+        const response = await fetch('/api/produk');
+
+        if (!response.ok) {
+          throw new Error('Gagal mengambil data produk');
+        }
+
+        const produk = await response.json();
+
+        // Memastikan response berupa array JSON
+        if (!Array.isArray(produk)) {
+          throw new Error('Format data produk tidak valid');
+        }
+
+        // Menghapus tampilan sebelumnya
+        container.innerHTML = '';
+
+        // Menampilkan produk dari backend
+        produk.forEach(function (item) {
+
+          const kartu = document.createElement('article');
+          kartu.className = 'kartu';
+
+          const nama = document.createElement('h3');
+          nama.textContent = item.nama;
+
+          const kategori = document.createElement('p');
+          kategori.textContent = 'Kategori: ' + item.kategori;
+
+          const deskripsi = document.createElement('p');
+          deskripsi.textContent = item.deskripsi;
+
+          const harga = document.createElement('strong');
+          harga.textContent = 'Rp ' +
+            Number(item.harga).toLocaleString('id-ID');
+
+          kartu.appendChild(nama);
+          kartu.appendChild(kategori);
+          kartu.appendChild(deskripsi);
+          kartu.appendChild(harga);
+
+          container.appendChild(kartu);
+        });
+
+        status.textContent =
+          produk.length + ' produk berhasil dimuat dari backend.';
+
+      } catch (error) {
+        status.textContent = error.message;
+
+        container.innerHTML = '';
+        console.error('Error produk:', error);
+      }
+    }
+
+
+    // 3. Formulir masukan (simulasi)
+    document.getElementById('feedback-form')
+      .addEventListener('submit', function(e) {
+
+        e.preventDefault();
+
+        if (!this.checkValidity()) {
+          this.reportValidity();
+          return;
+        }
+
+        const status = document.getElementById('status-pesan');
+
+        status.hidden = false;
+
+        status.textContent =
+          'Pesan berhasil divalidasi. (Simulasi, belum disimpan ke server.)';
+      });
+
+
+    // 4. Menjalankan fungsi ketika halaman dibuka
+    loadStatus();
+    loadProduk();
+
+  </script>
+
+  <%- include('partials/footer', { anggota: anggota }) %>
+</body>
+</html>

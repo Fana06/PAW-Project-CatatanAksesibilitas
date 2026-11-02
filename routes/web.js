@@ -1,0 +1,1 @@
+const express = require('express'); const c = require('../controllers/homeController'); const router = express.Router(); router.get('/', c.index); router.get('/ulasan', c.ulasan); module.exports = router;
