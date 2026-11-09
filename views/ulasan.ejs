@@ -1,7 +1,214 @@
-<%- include('partials/head', { judul: judul }) %>
-<body><a class="skip-link" href="#konten">Lewati ke konten utama</a><header class="site-header"><div class="container header-inner"><a class="brand" href="/"><img src="/assets/logo.svg" alt="" width="32" height="32"><span>Catatan Aksesibilitas</span></a><nav aria-label="Navigasi halaman"><ul class="menu"><li><a href="/">Beranda</a></li><li><a href="/ulasan" aria-current="page">Ulasan Jurnal</a></li><li><a href="/api/status">API status</a></li><li><a href="/api/produk">API produk</a></li></ul></nav></div></header>
-<main id="konten"><section class="fitur"><div class="container"><h1>Menulis HTML yang bisa dipakai semua orang</h1><p class="pengantar">Ulasan jurnal karya Daniel Dang tentang menerapkan prinsip web accessibility lewat HTML, CSS, dan JavaScript semantic.</p><h2>Empat prinsip POUR</h2><div class="grid-fitur"><% prinsip.forEach(function(p){ %><article class="kartu"><span class="huruf"><%= p.huruf %></span><h3><%= p.nama %></h3><p><%= p.deskripsi %></p></article><% }); %></div></div></section>
-<section><div class="container"><h2>Ringkasan jurnal</h2><p><strong>Judul:</strong> Using Blended HTML-CSS-JS Semantic to Implement Web Accessibility Principles.</p><p><strong>Penulis:</strong> Daniel Dang, Eastern Institute of Technology Te Aho a Māui.</p><p><strong>Tahun terbit:</strong> 2024; dipresentasikan pada konferensi CITRENZ 2023.</p><p>Jurnal ini mengulas apa itu prinsip web accessibility, tantangan mengajarkannya kepada mahasiswa, dan cara menggabungkan HTML, CSS, serta JavaScript semantic untuk membangun situs yang lebih mudah diakses. Aksesibilitas juga penting untuk pengguna dengan keterbatasan situasional, layar kecil, atau bandwidth yang terbatas.</p><h2>Ringkasan teknik per prinsip</h2><div class="api-status"><p>Perceivable: gunakan teks alternatif untuk gambar, struktur semantic, dan caption untuk media.</p><p>Operable: pastikan fungsi dapat digunakan melalui keyboard dan tampilkan indikator fokus yang jelas.</p><p>Understandable: gunakan bahasa sederhana, heading yang berurutan, tabel yang benar, serta label untuk form.</p><p>Robust: gunakan elemen HTML sesuai fungsinya dan uji hasilnya dengan assistive technology.</p></div><h2>Kekuatan</h2><ul><li>Panduan praktik dikelompokkan menurut prinsip POUR.</li><li>Menekankan bahwa aksesibilitas melibatkan HTML, CSS, dan JavaScript sekaligus.</li><li>Mengingatkan pentingnya pengujian dengan assistive technology dan pengguna.</li></ul><h2>Keterbatasan</h2><ul><li>Metodologi penyusunan panduan tidak dibahas secara mendalam.</li><li>Informasi survei mahasiswa yang dikutip terbatas.</li><li>Contoh kode dan evaluasi empiris masih relatif sedikit.</li></ul><h2>Sitasi</h2><p>Dang, D. (2024). “Using Blended HTML-CSS-JS Semantic to Implement Web Accessibility Principles.” <em>Proceedings: CITRENZ 2023 Conference</em>, hlm. 70–77. ePress, Unitec.</p><p><a href="https://doi.org/10.34074/proc.240110">https://doi.org/10.34074/proc.240110</a></p><p><a class="btn btn-utama" href="/">Kembali ke beranda</a></p></div></section></main>
-<%- include('partials/footer', { anggota: anggota }) %>
-</body>
-</html>
+<%- include("partials/head", { judul: judul }) %>
+<body>
+<%- include("partials/header", { activePage: activePage }) %>
+
+<main id="konten">
+  <section class="page-hero">
+    <div class="container page-hero-inner">
+      <p class="eyebrow">Ulasan artikel ilmiah</p>
+      <h1>Using Blended HTML-CSS-JS Semantic to Implement Web Accessibility Principles</h1>
+      <p>
+        Ulasan jurnal Daniel Dang mengenai penerapan prinsip aksesibilitas web
+        melalui penggunaan HTML, CSS, dan JavaScript semantic.
+      </p>
+      <div class="action-row">
+        <a class="btn btn-primary-custom" href="#ringkasan">Baca ringkasan</a>
+        <a class="btn btn-outline-custom" href="#pour">Pelajari prinsip POUR</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="ringkasan">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Bagian 01</p>
+        <h2>Ringkasan jurnal</h2>
+        <p>Identitas, latar belakang, tujuan, dan pokok pembahasan artikel.</p>
+      </div>
+
+      <div class="journal-layout">
+        <aside class="journal-meta content-card">
+          <h3>Identitas jurnal</h3>
+          <dl>
+            <dt>Judul</dt>
+            <dd>Using Blended HTML-CSS-JS Semantic to Implement Web Accessibility Principles</dd>
+            <dt>Penulis</dt>
+            <dd>Daniel Dang</dd>
+            <dt>Publikasi</dt>
+            <dd>Proceedings: CITRENZ 2023</dd>
+            <dt>Halaman</dt>
+            <dd>70–77</dd>
+            <dt>DOI</dt>
+            <dd><a href="https://doi.org/10.34074/proc.240110" target="_blank" rel="noopener">10.34074/proc.240110</a></dd>
+          </dl>
+        </aside>
+
+        <article class="content-card journal-summary">
+          <h3>Gambaran umum</h3>
+          <p>
+            Artikel ini membahas pentingnya <em>web accessibility</em>, yaitu
+            upaya mengurangi hambatan agar informasi dan fitur website dapat
+            digunakan oleh lebih banyak orang. Hambatan tersebut tidak hanya
+            berkaitan dengan disabilitas fisik, tetapi juga dapat muncul karena
+            kondisi sementara atau situasional serta keterbatasan sosial-ekonomi.
+          </p>
+          <p>
+            Penulis mengangkat tantangan dalam mengajarkan aksesibilitas web
+            kepada mahasiswa dan menjelaskan bagaimana HTML, CSS, serta
+            JavaScript yang digunakan secara tepat dapat membantu menerapkan
+            empat prinsip aksesibilitas, yaitu Perceivable, Operable,
+            Understandable, dan Robust (POUR).
+          </p>
+          <div class="summary-callout">
+            <strong>Inti jurnal</strong>
+            <p>Aksesibilitas bukan hanya membuat website terlihat baik, tetapi memastikan informasi dan fungsi website dapat dipahami serta digunakan oleh beragam pengguna.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="focus-grid">
+        <article class="content-card">
+          <span class="focus-number">01</span>
+          <h3>Prinsip aksesibilitas</h3>
+          <p>Menjelaskan empat prinsip POUR sebagai dasar dalam membangun website yang aksesibel.</p>
+        </article>
+        <article class="content-card">
+          <span class="focus-number">02</span>
+          <h3>Tantangan pembelajaran</h3>
+          <p>Membahas kesulitan mengajarkan aksesibilitas web kepada mahasiswa tingkat sarjana.</p>
+        </article>
+        <article class="content-card">
+          <span class="focus-number">03</span>
+          <h3>Penerapan teknologi</h3>
+          <p>Menjelaskan pemanfaatan semantic HTML, CSS, dan JavaScript untuk mendukung aksesibilitas.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="pour">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Bagian 02</p>
+        <h2>Empat prinsip POUR</h2>
+        <p>Keempat prinsip ini saling melengkapi. Website perlu memenuhi semuanya agar lebih mudah diakses.</p>
+      </div>
+
+      <div class="principle-grid">
+        <% prinsip.forEach(function (p) { %>
+          <article class="content-card principle-card">
+            <span class="principle-letter" aria-hidden="true"><%= p.huruf %></span>
+            <h3><%= p.nama %></h3>
+            <p><%= p.deskripsi %></p>
+          </article>
+        <% }); %>
+      </div>
+
+      <div class="table-wrap">
+        <table class="tech-table">
+          <thead>
+            <tr>
+              <th scope="col">Prinsip</th>
+              <th scope="col">Contoh penerapan</th>
+              <th scope="col">Tujuan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Perceivable</th>
+              <td>Teks alternatif gambar, caption media, struktur konten yang jelas.</td>
+              <td>Informasi dapat diterima melalui cara yang sesuai dengan kebutuhan pengguna.</td>
+            </tr>
+            <tr>
+              <th scope="row">Operable</th>
+              <td>Navigasi keyboard, indikator fokus, tombol dan tautan yang dapat digunakan.</td>
+              <td>Fungsi website dapat dioperasikan tanpa bergantung pada mouse.</td>
+            </tr>
+            <tr>
+              <th scope="row">Understandable</th>
+              <td>Bahasa sederhana, heading terstruktur, label form, navigasi konsisten.</td>
+              <td>Informasi dan cara menggunakan website mudah dipahami.</td>
+            </tr>
+            <tr>
+              <th scope="row">Robust</th>
+              <td>HTML sesuai standar, penggunaan ARIA secara tepat, pengujian dengan teknologi bantu.</td>
+              <td>Konten dapat ditafsirkan oleh berbagai browser dan assistive technology.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container two-column-section">
+      <div>
+        <p class="eyebrow">Bagian 03</p>
+        <h2>Tantangan mengajarkan aksesibilitas</h2>
+        <p>Artikel juga membahas beberapa hambatan yang dapat ditemui dalam proses pembelajaran aksesibilitas web.</p>
+      </div>
+      <div class="challenge-list">
+        <article><strong>Kompleksitas teknis</strong><p>Materi menggabungkan banyak aspek teknis HTML, CSS, JavaScript, dan teknologi bantu.</p></article>
+        <article><strong>Keterbatasan waktu</strong><p>Waktu pembelajaran perlu dibagi dengan materi pengembangan web lainnya.</p></article>
+        <article><strong>Keterbatasan sumber daya</strong><p>Praktik dan pengujian membutuhkan alat serta kesempatan untuk mencoba teknologi bantu.</p></article>
+        <article><strong>Kurangnya kesadaran</strong><p>Aksesibilitas dapat terlewat apabila pengembang belum memahami pentingnya kebutuhan pengguna yang beragam.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Bagian 04</p>
+        <h2>Kesimpulan jurnal</h2>
+      </div>
+      <article class="content-card conclusion-card">
+        <p>
+          Penerapan aksesibilitas perlu dilakukan sejak proses perancangan
+          website. Penggunaan semantic HTML, CSS yang mendukung tampilan
+          responsif dan fokus, serta JavaScript dan ARIA secara tepat dapat
+          membantu membangun antarmuka yang lebih mudah digunakan.
+        </p>
+        <p>
+          Namun, penulisan kode saja belum cukup. Website juga perlu diuji
+          menggunakan alat pemeriksaan aksesibilitas dan, jika memungkinkan,
+          melibatkan pengguna penyandang disabilitas agar hambatan nyata dapat
+          ditemukan.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <p class="eyebrow">Bagian 05</p>
+        <h2>Hubungan jurnal dengan project kelompok</h2>
+        <p>Project Catatan Aksesibilitas mengadaptasi beberapa praktik yang dibahas dalam artikel.</p>
+      </div>
+      <div class="implementation-grid">
+        <article class="content-card"><h3>Struktur semantic</h3><p>Menggunakan elemen seperti header, nav, main, section, article, dan footer untuk memberi struktur halaman.</p></article>
+        <article class="content-card"><h3>Navigasi yang jelas</h3><p>Menyediakan tautan dan tombol dengan label yang menjelaskan tujuan halaman.</p></article>
+        <article class="content-card"><h3>Form yang berlabel</h3><p>Memberikan label pada input agar tujuan setiap kolom lebih mudah dikenali.</p></article>
+        <article class="content-card"><h3>Fokus dan responsif</h3><p>Menyediakan indikator fokus keyboard serta tata letak yang menyesuaikan ukuran layar.</p></article>
+      </div>
+      <p class="small-note mt-3">Catatan: penerapan beberapa praktik tersebut belum berarti website otomatis 100% aksesibel. Pengujian lanjutan tetap diperlukan.</p>
+    </div>
+  </section>
+
+  <section class="section section-dark">
+    <div class="container citation-layout">
+      <div>
+        <p class="eyebrow eyebrow-light">Referensi</p>
+        <h2>Sumber jurnal</h2>
+        <p>Gunakan sitasi berikut sebagai referensi utama ulasan.</p>
+      </div>
+      <div class="citation-box">
+        Dang, D. (2024). “Using Blended HTML-CSS-JS Semantic to Implement Web Accessibility Principles.” <em>Proceedings: CITRENZ 2023 Conference</em>, 70–77.
+        <a href="https://doi.org/10.34074/proc.240110" target="_blank" rel="noopener">https://doi.org/10.34074/proc.240110</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include("partials/footer", { anggota: anggota }) %>

@@ -1,0 +1,28 @@
+<%- include("../partials/head", { judul: judul }) %>
+<body>
+<%- include("../partials/header", { activePage: activePage }) %>
+
+<main class="section" id="konten">
+  <div class="container">
+    <div class="section-heading section-heading-row">
+      <div>
+        <p class="eyebrow">Database project</p>
+        <h1>Kelola Produk</h1>
+        <p>Data materi dan alat bantu aksesibilitas yang tersimpan di PostgreSQL.</p>
+      </div>
+      <a class="btn btn-primary-custom" href="/produk/tambah">+ Tambah Produk</a>
+    </div>
+
+    <% if (pesan) { %>
+      <p class="notice-success" role="status"><%= pesan %></p>
+    <% } %>
+
+    <p id="produk-status" class="status-text" role="status" aria-live="polite">Memuat data produk...</p>
+    <div id="produk-list" class="product-grid" aria-busy="true"></div>
+    <p id="produk-error" class="notice-error" role="alert" hidden></p>
+    <p class="small-note mt-4">Halaman ini membaca data melalui endpoint <code>GET /api/produk</code>. Tambah, edit, dan hapus akan memperbarui database.</p>
+  </div>
+</main>
+
+<script src="/js/produk.js" defer></script>
+<%- include("../partials/footer", { anggota: anggota }) %>

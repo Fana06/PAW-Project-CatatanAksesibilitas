@@ -1,0 +1,47 @@
+/* Style tambahan sederhana untuk halaman CRUD. */
+.crud-card {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  padding: 1.2rem;
+  background: #fff;
+  border: 1px solid #c5d3df;
+  border-radius: 8px;
+  min-width: 0;
+}
+
+.crud-card h2 {
+  color: #14243b;
+  line-height: 1.25;
+  margin: .15rem 0 .4rem;
+}
+
+.crud-card p {
+  overflow-wrap: anywhere;
+}
+
+.crud-card .product-price {
+  color: #1d5c94;
+  font-size: 1.15rem;
+}
+
+.crud-card .btn {
+  width: auto;
+  min-height: 2.25rem;
+  padding: .45rem .85rem;
+  text-align: center;
+}
+
+#produk-list[aria-busy="true"] {
+  opacity: .65;
+}
+
+#form-status:empty {
+  display: none;
+}
+
+@media (max-width: 560px) {
+  .crud-card .btn {
+    flex: 1;
+  }
+}

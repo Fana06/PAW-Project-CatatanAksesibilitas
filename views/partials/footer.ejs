@@ -1,10 +1,24 @@
 <footer class="site-footer" id="tim">
   <div class="container">
-    <h2>Tim</h2>
-    <p class="kelas">Kelas A, mata kuliah PAW.</p>
+    <div class="footer-top">
+      <div>
+        <h2>Catatan Aksesibilitas</h2>
+        <p>Project kelompok mata kuliah Pengembangan Aplikasi Web — Kelas A.</p>
+      </div>
+      <a class="footer-link" href="/">Kembali ke beranda</a>
+    </div>
+
+    <h3 class="footer-heading">Anggota kelompok</h3>
     <ul class="anggota">
-      <% anggota.forEach(function (orang) { %><li><span class="nama"><%= orang.nama %></span> <span class="nim"><%= orang.nim %></span></li><% }) %>
+      <% anggota.forEach(function (orang) { %>
+        <li>
+          <span class="nama"><%= orang.nama %></span>
+          <span class="nim"><%= orang.nim %></span>
+        </li>
+      <% }); %>
     </ul>
-    <p class="week-note">Week 7 — Express.js, EJS, REST API, dan middleware logger.</p>
+    <p class="week-note">Project berkelanjutan — Express.js, EJS, REST API, PostgreSQL, CRUD, dan middleware logger.</p>
   </div>
 </footer>
+</body>
+</html>

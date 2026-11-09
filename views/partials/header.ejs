@@ -1,0 +1,24 @@
+<a class="skip-link" href="#konten">Lewati ke konten utama</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="/" aria-label="Catatan Aksesibilitas, ke beranda">
+      <img src="/assets/logo.svg" width="34" height="34" alt="">
+      <span>Catatan Aksesibilitas</span>
+    </a>
+
+    <nav aria-label="Navigasi utama">
+      <ul class="menu">
+        <li>
+          <a href="/" <% if (activePage === "home") { %>aria-current="page"<% } %>>Beranda</a>
+        </li>
+        <li>
+          <a href="/ulasan" <% if (activePage === "review") { %>aria-current="page"<% } %>>Ulasan Jurnal</a>
+        </li>
+        <li>
+          <a href="/produk" <% if (activePage === "products") { %>aria-current="page"<% } %>>Kelola Produk</a>
+        </li>
+        <li><a href="/api/status" target="_blank" rel="noopener">Status API</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
