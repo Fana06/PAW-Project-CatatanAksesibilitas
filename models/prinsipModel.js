@@ -1,7 +1,30 @@
 const prinsip = [
- { huruf: 'P', nama: 'Perceivable', deskripsi: 'Isi harus bisa ditangkap pengguna. Beri teks alternatif pada gambar dan caption pada video.', contoh: 'alt' },
- { huruf: 'O', nama: 'Operable', deskripsi: 'Semua fungsi harus bisa dijalankan lewat keyboard, tidak hanya dengan mouse.', contoh: 'Tab' },
- { huruf: 'U', nama: 'Understandable', deskripsi: 'Pakai bahasa sederhana, heading berurutan, dan form dengan label.', contoh: '<label>' },
- { huruf: 'R', nama: 'Robust', deskripsi: 'Tulis kode valid dan sesuai standar agar terbaca browser dan screen reader.', contoh: '<button>' }
+  {
+    huruf: "P",
+    nama: "Perceivable",
+    deskripsi: "Informasi dan komponen antarmuka harus dapat ditangkap pengguna, misalnya melalui teks alternatif dan caption.",
+    contoh: "alt text"
+  },
+  {
+    huruf: "O",
+    nama: "Operable",
+    deskripsi: "Navigasi dan fungsi website harus dapat dioperasikan, termasuk menggunakan keyboard.",
+    contoh: "keyboard"
+  },
+  {
+    huruf: "U",
+    nama: "Understandable",
+    deskripsi: "Informasi dan cara penggunaan harus mudah dipahami, konsisten, serta memiliki label yang jelas.",
+    contoh: "label form"
+  },
+  {
+    huruf: "R",
+    nama: "Robust",
+    deskripsi: "Kode perlu mengikuti standar agar dapat ditafsirkan browser dan teknologi bantu.",
+    contoh: "semantic HTML"
+  }
 ];
-module.exports = { getAll: () => prinsip };
+
+module.exports = {
+  getAll: () => prinsip
+};

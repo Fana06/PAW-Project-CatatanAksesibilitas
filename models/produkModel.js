@@ -1,7 +1,40 @@
-// Model berisi data statis untuk memenuhi latihan REST API Week 7.
-const produk = [
-  { id: 1, nama: 'Panduan HTML Semantik', kategori: 'Materi Belajar', harga: 25000, deskripsi: 'Ringkasan penggunaan elemen HTML semantic.' },
-  { id: 2, nama: 'Checklist Aksesibilitas Web', kategori: 'Toolkit', harga: 15000, deskripsi: 'Checklist dasar untuk mengevaluasi prinsip POUR.' },
-  { id: 3, nama: 'Template Audit WCAG', kategori: 'Template', harga: 30000, deskripsi: 'Template catatan pemeriksaan aksesibilitas halaman web.' }
-];
-module.exports = { getAll: () => produk };
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/database");
+
+const Produk = sequelize.define(
+  "Produk",
+  {
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true
+    },
+    nama: {
+      type: DataTypes.STRING(120),
+      allowNull: false,
+      validate: { notEmpty: true }
+    },
+    kategori: {
+      type: DataTypes.STRING(80),
+      allowNull: false,
+      validate: { notEmpty: true }
+    },
+    harga: {
+      type: DataTypes.DECIMAL(12, 2),
+      allowNull: false,
+      validate: { min: 0 }
+    },
+    deskripsi: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: { notEmpty: true }
+    }
+  },
+  {
+    tableName: "produk",
+    timestamps: true,
+    underscored: true
+  }
+);
+
+module.exports = Produk;
