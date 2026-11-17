@@ -1,0 +1,120 @@
+<%- include("partials/head", {
+  judul: judul,
+  extraCss: "/css/assistant.css"
+}) %>
+
+<body>
+
+<%- include("partials/header", {
+  activePage: activePage
+}) %>
+
+<main class="section" id="konten">
+
+  <div class="container assistant-container">
+
+    <div class="section-heading">
+      <p class="eyebrow">AI-powered accessibility assistant</p>
+
+      <h1>AI Accessibility Assistant</h1>
+
+      <p>
+        Tanyakan berbagai hal seputar aksesibilitas website,
+        semantic HTML, CSS, JavaScript, dan prinsip POUR.
+      </p>
+    </div>
+
+    <section class="assistant-card">
+
+      <div class="assistant-header">
+
+        <div>
+          <h2>Asisten Aksesibilitas</h2>
+
+          <p>
+            Teman diskusi untuk memahami aksesibilitas web.
+          </p>
+        </div>
+
+        <span class="assistant-status">
+          AI Assistant
+        </span>
+
+      </div>
+
+      <div
+        id="chat-messages"
+        class="chat-messages"
+        role="log"
+        aria-live="polite"
+        aria-relevant="additions"
+      >
+
+        <div class="message assistant-message">
+
+          <span class="message-label">
+            AI Assistant
+          </span>
+
+          <div class="message-content">
+            Halo! Saya AI Accessibility Assistant.
+            Ada yang bisa saya bantu mengenai aksesibilitas website?
+          </div>
+
+        </div>
+
+      </div>
+
+      <form id="assistant-form" class="assistant-form">
+
+        <label for="message">
+          Tulis pertanyaan
+        </label>
+
+        <textarea
+          id="message"
+          name="message"
+          rows="3"
+          maxlength="4000"
+          placeholder="Contoh: Apa perbedaan semantic HTML dan HTML biasa?"
+          required
+        ></textarea>
+
+        <div class="assistant-actions">
+
+          <p
+            id="assistant-status"
+            role="status"
+            aria-live="polite"
+          >
+            Siap menerima pertanyaan.
+          </p>
+
+          <button
+            type="submit"
+            id="send-button"
+            class="btn btn-primary-custom"
+          >
+            Kirim Pertanyaan
+          </button>
+
+        </div>
+
+      </form>
+
+    </section>
+
+    <p class="assistant-note">
+      Jawaban AI dapat mengandung kekeliruan.
+      Tetap periksa informasi teknis menggunakan dokumentasi resmi.
+    </p>
+
+  </div>
+
+</main>
+
+<script src="/js/assistant.js" defer></script>
+
+<%- include("partials/footer", {
+  anggota: anggota
+}) %>
