@@ -145,12 +145,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const result = await readJson(response);
 
-      if (!response.ok || !result || result.sukses !== true) {
-        const serverMessage =
-          result && typeof result.pesan === "string" ? result.pesan.trim() : "";
+      if (!response.ok || !result || result.success !== true) {
+    const serverMessage =
+        result && typeof result.message === "string"
+        ? result.message.trim()
+          : "";
 
-        throw new Error(serverMessage || fallbackMessage(response.status));
-      }
+    throw new Error(
+        serverMessage || fallbackMessage(response.status)
+    );
+    }
 
       const reply =
         result.data && (result.data.balasan ?? result.data.reply);
