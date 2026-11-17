@@ -46,8 +46,10 @@
         id="chat-messages"
         class="chat-messages"
         role="log"
+        aria-label="Percakapan dengan AI Assistant"
         aria-live="polite"
         aria-relevant="additions"
+        tabindex="0"
       >
 
         <div class="message assistant-message">
@@ -65,7 +67,7 @@
 
       </div>
 
-      <form id="assistant-form" class="assistant-form">
+      <form id="assistant-form" class="assistant-form" novalidate>
 
         <label for="message">
           Tulis pertanyaan
@@ -77,8 +79,15 @@
           rows="3"
           maxlength="4000"
           placeholder="Contoh: Apa perbedaan semantic HTML dan HTML biasa?"
+          aria-describedby="assistant-hint assistant-status"
+          autocomplete="off"
+          enterkeyhint="send"
           required
         ></textarea>
+
+        <p id="assistant-hint" class="assistant-hint">
+          Tekan Enter untuk mengirim, Shift+Enter untuk baris baru.
+        </p>
 
         <div class="assistant-actions">
 
