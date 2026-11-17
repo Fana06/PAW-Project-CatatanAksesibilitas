@@ -130,3 +130,11 @@ Endpoint yang perlu diperiksa:
 - GET /assistant
 
 Pengujian CRUD lama tetap dilakukan untuk memastikan tidak terjadi regresi.
+
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/7c40a471-923b-4e61-979e-2e0d315007db" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/a53376cb-b744-4434-b9e4-ea892823eb8a" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e299f0a6-2fdf-479f-b237-7a0212932de9" />
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/965eb208-010b-4bd9-bd00-2ee6e0bdf332" />
+RPD Gemini telah mencapai limit karena dicoba berkali-kali untuk troubleshooting
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/72a98001-9733-44e9-8c53-47e445d3559d" />
+
