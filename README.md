@@ -1,92 +1,132 @@
-# Catatan Aksesibilitas Web — Project PAW Kelompok 2 Kelas A
 
-Project ini merupakan pengembangan berkelanjutan dari website Catatan Aksesibilitas. Konten utama membahas jurnal Daniel Dang mengenai penggunaan semantic HTML, CSS, dan JavaScript untuk menerapkan prinsip web accessibility (POUR).
+# Catatan Aksesibilitas Web — Project PAW
+
+Project ini merupakan pengembangan website Catatan Aksesibilitas untuk mata kuliah Pengembangan Aplikasi Web.
 
 ## Teknologi
-- Node.js dan Express.js
-- EJS sebagai view engine
-- Bootstrap 5 melalui CDN dan CSS khusus project
-- PostgreSQL sebagai database
-- Sequelize sebagai ORM
-- REST API untuk operasi CRUD
-- Middleware logger untuk mencatat request
+- Node.js
+- Express.js 4
+- CommonJS
+- EJS
+- PostgreSQL
+- Sequelize ORM
+- REST API
+- Logger Middleware
+- Google Gemini API
+- @google/genai
 
-## Menjalankan project
-1. Pastikan Node.js dan PostgreSQL sudah terpasang.
-2. Buat database bernama `a11ylab_db` melalui pgAdmin dengan menjalankan isi `database/create-database.sql`.
-3. Salin `.env.example` menjadi `.env`, kemudian sesuaikan password PostgreSQL.
-4. Jalankan perintah berikut di terminal root project:
+## Persiapan
+
+1. Pastikan Node.js dan PostgreSQL tersedia.
+2. Gunakan database existing `a11ylab_db`.
+3. Salin `.env.example` menjadi `.env`.
+4. Isi konfigurasi PostgreSQL.
+5. Isi GEMINI_API_KEY pada `.env` lokal.
+6. Jangan commit file `.env`.
+
+## Instalasi
 
 ```bash
 npm install
-npm run seed
+npm install @google/genai
+```
+
+Jalankan aplikasi:
+
+```bash
 npm run dev
 ```
 
-5. Buka `http://localhost:3000`.
+Buka:
 
-## Halaman website
-- `/` — Beranda dan pintasan ke semua fitur utama.
-- `/ulasan` — Ringkasan jurnal, prinsip POUR, teknik, tantangan, kesimpulan, dan sitasi.
-- `/produk` — Halaman pengelolaan data produk.
-- `/produk/tambah` — Form tambah produk.
-- `/produk/:id/edit` — Form edit produk.
+http://localhost:3000
 
-## Endpoint API
-| Method | Endpoint | Kegunaan |
+## Halaman Website
+
+| Path | Keterangan |
+|---|---|
+| / | Beranda |
+| /ulasan | Ulasan jurnal |
+| /produk | Pengelolaan produk |
+| /produk/tambah | Tambah produk |
+| /produk/:id/edit | Edit produk |
+| /assistant | AI Accessibility Assistant |
+
+## REST API
+
+| Method | Endpoint | Keterangan |
 |---|---|---|
-| GET | `/api/status` | Status server |
-| GET | `/api/produk` | Mengambil seluruh produk |
-| GET | `/api/produk/:id` | Mengambil detail produk |
-| POST | `/api/produk` | Menambahkan produk |
-| PUT | `/api/produk/:id` | Memperbarui produk |
-| DELETE | `/api/produk/:id` | Menghapus produk |
+| GET | /api/status | Status server |
+| GET | /api/produk | Semua produk |
+| GET | /api/produk/:id | Detail produk |
+| POST | /api/produk | Tambah produk |
+| PUT | /api/produk/:id | Ubah produk |
+| DELETE | /api/produk/:id | Hapus produk |
+| POST | /api/chat | Chat AI Gemini |
 
-Contoh JSON untuk POST dan PUT:
+## Format API Chat
+
+Request:
 
 ```json
 {
-  "nama": "Panduan ARIA Dasar",
-  "kategori": "Materi Belajar",
-  "harga": 20000,
-  "deskripsi": "Materi pengantar penggunaan atribut ARIA secara tepat."
+  "pesan": "Apa itu semantic HTML?"
 }
 ```
 
-## Struktur folder
-```text
-config/          konfigurasi aplikasi dan database
-controllers/     controller halaman dan API
-database/        SQL pembuatan database
-logs/            file log request
-middlewares/     middleware logger
-models/          model prinsip POUR dan produk
-public/assets/   aset SVG
-public/css/      stylesheet
-public/js/       JavaScript frontend
-routes/          route web dan API
-seeders/         data awal database
-utils/           validasi, data tim, dan fungsi bantuan
-views/           template EJS
-app.js           entry point Express
+Response:
+
+```json
+{
+  "sukses": true,
+  "data": {
+    "balasan": "Semantic HTML adalah..."
+  }
+}
 ```
+
+## Keamanan API Key
+
+- GEMINI_API_KEY disimpan di environment.
+- API key hanya digunakan di backend.
+- Jangan meletakkan API key di JavaScript frontend.
+- Jangan menampilkan API key dalam log.
+- Jangan memasukkan API key asli ke README atau GitHub.
+
+## Database
+
+Database menggunakan PostgreSQL existing:
+
+`a11ylab_db`
+
+Tidak membuat database pengganti.
+
+## Logger Middleware
+
+Logger Middleware tetap dipasang secara global melalui app.js.
+
+Log request disimpan di:
+
+`logs/requests.log`
 
 ## Pengujian
-1. Pastikan data awal muncul pada `/produk`.
-2. Tambahkan satu produk melalui tombol Tambah Produk.
-3. Edit produk tersebut.
-4. Hapus produk tersebut.
-5. Uji seluruh endpoint CRUD menggunakan Postman atau Thunder Client.
-6. Periksa tabel `produk` melalui pgAdmin:
 
-```sql
-SELECT * FROM produk ORDER BY id;
+Pemeriksaan sintaks:
+
+```bash
+node --check app.js
+node --check routes/index.js
+node --check routes/web.js
+node --check routes/api.js
+node --check controllers/assistantController.js
+node --check public/js/assistant.js
 ```
 
-7. Perhatikan terminal dan `logs/requests.log` untuk melihat catatan request.
+Endpoint yang perlu diperiksa:
 
-## Catatan
-- Data produk adalah data contoh untuk mendemonstrasikan CRUD yang berkaitan dengan materi aksesibilitas.
-- Form masukan pada beranda masih berupa simulasi dan belum menyimpan pesan.
-- Belum ada login atau pembatasan hak akses. Fitur CRUD ditujukan untuk demonstrasi tugas lokal, bukan penggunaan produksi.
-- Penerapan beberapa praktik aksesibilitas tidak berarti website otomatis 100% aksesibel. Pengujian lebih lanjut tetap diperlukan.
+- GET /api/status
+- GET /api/produk
+- POST /api/chat
+- GET /assistant
+
+Pengujian CRUD lama tetap dilakukan untuk memastikan tidak terjadi regresi.
